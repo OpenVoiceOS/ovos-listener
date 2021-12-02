@@ -1,4 +1,4 @@
-ovos-core~=0.0.2a1
+ovos-core~=0.0.2a2
 SpeechRecognition~=3.8.1
 PyAudio~=0.2.11
 ovos-ww-plugin-pocketsphinx~=0.1.1
