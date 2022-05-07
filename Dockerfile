@@ -13,7 +13,6 @@ RUN apt-get update && \
 # the lines above are kept static so that docker layer is shared and cached among all containers
 RUN apt-get install -y portaudio19-dev libpulse-dev swig
 
-USER mycroft
 
 
 COPY . /tmp/ovos-speech
@@ -22,4 +21,5 @@ RUN pip3 install /tmp/ovos-speech
 # TODO remove this, missing dependency in ovos-core
 RUN pip3 install python-dateutil
 
+USER mycroft
 ENTRYPOINT mycroft-speech-client
