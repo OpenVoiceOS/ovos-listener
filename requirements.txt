@@ -1,7 +1,1 @@
-ovos-core~=0.0.2a2
-SpeechRecognition~=3.8.1
-PyAudio~=0.2.11
-ovos-ww-plugin-pocketsphinx~=0.1.1
-ovos-ww-plugin-precise-lite~=0.1.0
-ovos-stt-plugin-chromium
-ovos-stt-plugin-vosk
+ovos-core~=0.0.2a41[stt]
