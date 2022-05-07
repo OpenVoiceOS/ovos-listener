@@ -1,1 +1,1 @@
-ovos-core~=0.0.2a41[stt]
+ovos-core[stt]~=0.0.2a41
