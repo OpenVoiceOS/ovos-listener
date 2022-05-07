@@ -18,4 +18,7 @@ RUN apt-get install -y portaudio19-dev libpulse-dev swig
 COPY . /tmp/ovos-speech
 RUN pip3 install /tmp/ovos-speech
 
+# TODO remove this, missing dependency in ovos-core
+RUN pip3 install python-dateutil
+
 ENTRYPOINT mycroft-speech-client
