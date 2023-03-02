@@ -5,12 +5,24 @@ from signal import signal, SIGKILL, SIGINT, SIGTERM, \
 
 import pyaudio
 from ovos_config.meta import get_xdg_base
+from ovos_utils.file_utils import get_temp_path
 from ovos_utils.log import LOG
 
-#
-# Wrapper around chain of handler functions for a specific system level signal.
-# Often used to trap Ctrl-C for specific application purposes.
-from mycroft.util.file_utils import get_temp_path
+
+def report_timing(ident, system, timing, additional_data=None):
+    """Create standardized message for reporting timing.
+
+    Args:
+        ident (str):            identifier of user interaction
+        system (str):           system the that's generated the report
+        timing (stopwatch):     Stopwatch object with recorded timing
+        additional_data (dict): dictionary with related data
+    """
+    try:
+        from mycroft.metrics import report_timing
+        report_timing(ident, system, timing, additional_data)
+    except:
+        LOG.error("Failed to upload metrics")
 
 
 def find_input_device(device_name):
@@ -121,9 +133,9 @@ class PIDLock:  # python 3+ 'class Lock'
         service: Text string.  The name of the service application
         to be locked (ie: skills, voice)
         """
-        super(Lock, self).__init__()  # python 3+ 'super().__init__()'
+        super(PIDLock, self).__init__()  # python 3+ 'super().__init__()'
         self.__pid = os.getpid()  # PID of this application
-        self.path = Lock.DIRECTORY + Lock.FILE.format(service)
+        self.path = PIDLock.DIRECTORY + PIDLock.FILE.format(service)
         self.set_handlers()  # set signal handlers
         self.create()
 
@@ -161,11 +173,11 @@ class PIDLock:  # python 3+ 'class Lock'
     def touch(self):
         """
         If needed, create the '/tmp/mycroft' directory than open the
-        lock file for writting and store the current process ID (PID)
+        lock file for writing and store the current process ID (PID)
         as text.
         """
-        if not os.path.exists(Lock.DIRECTORY):
-            os.makedirs(Lock.DIRECTORY)
+        if not os.path.exists(PIDLock.DIRECTORY):
+            os.makedirs(PIDLock.DIRECTORY)
         with open(self.path, 'w') as L:
             L.write('{}'.format(self.__pid))
 

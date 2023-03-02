@@ -22,7 +22,7 @@ from ovos_utils.log import LOG
 from ovos_utils.metrics import Stopwatch
 from pyee import EventEmitter
 
-from mycroft.metrics import report_timing
+from ovos_listener.utils import report_timing
 from ovos_listener.hotword_factory import HotWordFactory
 from ovos_listener.mic import MutableMicrophone, ResponsiveRecognizer, ListenerState
 from ovos_listener.stt import STTFactory
