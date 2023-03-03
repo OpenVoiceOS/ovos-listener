@@ -8,4 +8,4 @@ RUN pip3 install /tmp/ovos-speech
 
 USER mycroft
 
-ENTRYPOINT mycroft-speech-client
+ENTRYPOINT ovos-listener

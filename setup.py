@@ -33,8 +33,18 @@ setup(
     name='ovos-speech',
     version="0.0.2",
     license='Apache-2.0',
-    url='https://github.com/OpenVoiceOS/ovos-core',
-    description='ovos-core metapackage for speech daemon',
+    url='https://github.com/OpenVoiceOS/ovos-listener',
+    description='ovos-core speech daemon client',
     include_package_data=True,
-    install_requires=required('requirements.txt')
+    install_requires=required('requirements.txt'),
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: Apache Software License",
+    ],
+    entry_points={
+        'console_scripts': [
+            'ovos-listener=ovos_listener.__main__:main'
+        ]
+    }
 )
