@@ -20,6 +20,7 @@ from ovos_listener.service import SpeechService, on_error, on_stopping, on_ready
 
 def main(ready_hook=on_ready, error_hook=on_error, stopping_hook=on_stopping,
          watchdog=lambda: None):
+    PIDLock.init()
     reset_sigint_handler()
     init_service_logger("voice")
     PIDLock("voice")
