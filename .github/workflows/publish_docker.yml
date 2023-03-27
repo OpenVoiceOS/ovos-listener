@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: OpenVoiceOS/speech
+  IMAGE_NAME: OpenVoiceOS/listener
 
 jobs:
   build_and_publish_docker:
