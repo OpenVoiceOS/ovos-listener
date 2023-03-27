@@ -30,11 +30,11 @@ def required(requirements_file):
 
 
 setup(
-    name='ovos-speech',
+    name="ovos-listener",
     version="0.0.2",
-    license='Apache-2.0',
-    url='https://github.com/OpenVoiceOS/ovos-listener',
-    description='ovos-core speech daemon client',
+    license="Apache-2.0",
+    url="https://github.com/OpenVoiceOS/ovos-listener",
+    description="ovos-core listener daemon client",
     include_package_data=True,
     install_requires=required('requirements.txt'),
     classifiers=[
