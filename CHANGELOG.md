@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/OpenVoiceOS/ovos-listener/tree/HEAD)
+## [V0.0.2a1](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2a1) (2023-04-04)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/f2dfa0c84898d7ba57901810ee50bf30f7d45030...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/f2dfa0c84898d7ba57901810ee50bf30f7d45030...V0.0.2a1)
 
 **Implemented enhancements:**
 
