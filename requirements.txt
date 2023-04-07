@@ -13,7 +13,7 @@ ovos-stt-plugin-server~=0.0, >=0.0.2
 ovos-stt-plugin-vosk~=0.1
 
 ovos-utils~=0.0, >=0.0.31a3
-ovos-bus-client~=0.0, >=0.0.3a4
+ovos-bus-client~=0.0, >=0.0.3a10
 ovos-plugin-manager~=0.0, >=0.0.23a5
-ovos-config~=0.0,>=0.0.8a2
+ovos-config~=0.0,>=0.0.8a3
 ovos_backend_client~=0.0, >=0.0.7a2
