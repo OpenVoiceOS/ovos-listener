@@ -70,7 +70,7 @@ setup(
     url='https://github.com/OpenVoiceOS/ovos-listener',
     description='ovos-core listener daemon client',
     include_package_data=True,
-    package_data={"": package_files('ovos_listener/res')},
+    package_data={"ovos_listener": package_files('ovos_listener')},
     install_requires=required('requirements.txt'),
     classifiers=[
         "Development Status :: 4 - Beta",
