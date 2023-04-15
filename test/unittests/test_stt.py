@@ -25,7 +25,7 @@ from ovos_utils.process_utils import ProcessState
 
 import ovos_listener.stt
 from ovos_config import Configuration
-from ovos_listener import RecognizerLoop
+from ovos_listener.listener import RecognizerLoop
 from ovos_listener.service import SpeechService
 from .mocks import base_config
 
