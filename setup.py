@@ -71,6 +71,8 @@ setup(
     description='ovos-core listener daemon client',
     include_package_data=True,
     install_requires=required('requirements.txt'),
+    packages=['ovos_listener'],
+    package_data={'': package_files("ovos_listener")},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",
