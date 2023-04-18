@@ -1,0 +1,6 @@
+pytest==5.2.4
+pytest-cov==2.8.1
+cov-core==1.15.0
+
+ovos-stt-plugin-selene>=0.0.3a3
+ovos-stt-plugin-vosk>=0.1.3

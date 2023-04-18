@@ -26,7 +26,6 @@ def package_files(directory):
     return paths
 
 
-
 def required(requirements_file):
     """ Read requirements file and remove comments and empty lines. """
     with open(os.path.join(BASEDIR, requirements_file), 'r') as f:
@@ -71,6 +70,8 @@ setup(
     description='ovos-core listener daemon client',
     include_package_data=True,
     install_requires=required('requirements.txt'),
+    packages=['ovos_listener'],
+    package_data={'': package_files("ovos_listener")},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",
