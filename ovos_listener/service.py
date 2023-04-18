@@ -15,7 +15,7 @@
 
 from threading import Thread
 
-from mycroft_bus_client import Message, MessageBusClient
+from ovos_bus_client import Message, MessageBusClient
 from ovos_backend_client.identity import IdentityManager
 from ovos_config.config import Configuration
 from ovos_plugin_manager.stt import get_stt_lang_configs, get_stt_supported_langs, get_stt_module_configs
