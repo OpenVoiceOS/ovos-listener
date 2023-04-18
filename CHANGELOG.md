@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased](https://github.com/OpenVoiceOS/ovos-listener/tree/HEAD)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a9...HEAD)
+
+**Merged pull requests:**
+
+- Add libpulse-dev to unit test automation [\#14](https://github.com/OpenVoiceOS/ovos-listener/pull/14) ([NeonDaniel](https://github.com/NeonDaniel))
+- Add `packages` and `package_data` to setup.py [\#13](https://github.com/OpenVoiceOS/ovos-listener/pull/13) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [V0.0.2a9](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2a9) (2023-04-15)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a8...V0.0.2a9)
+
 ## [V0.0.2a8](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2a8) (2023-04-15)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a7...V0.0.2a8)
