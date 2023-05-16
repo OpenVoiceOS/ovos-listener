@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/ovos-listener/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a9...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a10...HEAD)
+
+**Merged pull requests:**
+
+- Update requirements.txt [\#20](https://github.com/OpenVoiceOS/ovos-listener/pull/20) ([j1nx](https://github.com/j1nx))
+
+## [V0.0.2a10](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2a10) (2023-04-18)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a9...V0.0.2a10)
 
 **Merged pull requests:**
 
