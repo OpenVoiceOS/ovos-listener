@@ -191,8 +191,8 @@ class SilenceDetector:
                 self.use_ratio = True
 
         self.seconds_per_buffer = (
-                                          self.chunk_size / self.sample_width
-                                  ) / self.sample_rate
+            self.chunk_size / self.sample_width
+        ) / self.sample_rate
 
         # Store some number of seconds of audio data immediately before voice command starts
         self.before_buffers = int(
