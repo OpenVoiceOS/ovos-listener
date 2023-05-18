@@ -496,6 +496,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         try:
             for ww, hotword in self.loop.hot_words.items():
                 if hotword["engine"].found_wake_word(audio_data):
+                    LOG.debug(f"Detected ww: {ww}")
                     yield ww
         except RuntimeError:  # dictionary changed size during iteration
             # seems like config changed and we hit this mid reload!
@@ -815,6 +816,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
                     # else check for hotwords
                     if not was_wakeup:
                         for hotword in self.check_for_hotwords(audio_data, source):
+                            LOG.debug("Found hotword")
                             said_hot_word = True
                             listen = self.loop.engines[hotword]["listen"]
                             stt_lang = self.loop.engines[hotword]["stt_lang"]
@@ -824,6 +826,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
                                                     self._stop_signaled, ww_frames), stt_lang
 
                     if said_hot_word:
+                        LOG.debug("Found wakeup word")
                         # reset bytearray to store wake word audio in, else many
                         # serial detections
                         audio_buffer.clear()
