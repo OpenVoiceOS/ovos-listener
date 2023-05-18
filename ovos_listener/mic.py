@@ -494,13 +494,16 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
     def check_for_hotwords(self, audio_data, source):
         # check hot word
         try:
+            LOG.debug(f"Checking for hotword in {self.loop.hot_words}")
             for ww, hotword in self.loop.hot_words.items():
                 if hotword["engine"].found_wake_word(audio_data):
                     LOG.debug(f"Detected ww: {ww}")
                     yield ww
-        except RuntimeError:  # dictionary changed size during iteration
+        except RuntimeError as e:  # dictionary changed size during iteration
             # seems like config changed and we hit this mid reload!
-            pass
+            LOG.debug(e)
+        except Exception as e:
+            LOG.exception(e)
 
     def stop_recording(self):
         self._stop_recording = True
