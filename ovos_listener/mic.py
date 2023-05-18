@@ -494,7 +494,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
     def check_for_hotwords(self, audio_data, source):
         # check hot word
         try:
-            LOG.debug(f"Checking for hotword in {self.loop.hot_words}")
+            # LOG.debug(f"Checking for hotword in {self.loop.hot_words}")
             for ww, hotword in self.loop.hot_words.items():
                 if hotword["engine"].found_wake_word(audio_data):
                     LOG.debug(f"Detected ww: {ww}")
@@ -792,14 +792,17 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         # that we want to keep to send to STT
         ww_frames = deque(maxlen=7)
 
-        said_wake_word = False
         audio_data = silence
-        while not said_wake_word and not self._stop_signaled:
+        while not self._stop_signaled:
             for chunk in source.stream.iter_chunks():
                 if self._skip_wake_word():
                     return WakeWordData(audio_data, False,
                                         self._stop_signaled, ww_frames), \
                            self.config.get("lang", "en-us")
+
+                if self._stop_signaled:
+                    LOG.info("Stopping")
+                    break
 
                 audio_buffer.append(chunk)
                 ww_frames.append(chunk)
@@ -818,15 +821,16 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
 
                     # else check for hotwords
                     if not was_wakeup:
-                        for hotword in self.check_for_hotwords(audio_data, source):
-                            LOG.debug("Found hotword")
+                        for hotword in self.check_for_hotwords(audio_data,
+                                                               source):
                             said_hot_word = True
                             listen = self.loop.engines[hotword]["listen"]
                             stt_lang = self.loop.engines[hotword]["stt_lang"]
                             self._handle_hotword_found(hotword, audio_data, source)
                             if listen and not self.loop.state.sleeping:
-                                return WakeWordData(audio_data, said_wake_word,
-                                                    self._stop_signaled, ww_frames), stt_lang
+                                return WakeWordData(audio_data, True,
+                                                    self._stop_signaled,
+                                                    ww_frames), stt_lang
 
                     if said_hot_word:
                         LOG.debug("Found wakeup word")
@@ -853,6 +857,8 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
                             self._watchdog()
                             self.write_mic_level(energy, source)
                         mic_write_counter += 1
+        LOG.info("Stopping...")
+        return WakeWordData(None, False, True, None), ""
 
     @staticmethod
     def _create_audio_data(raw_data, source):
@@ -904,8 +910,9 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         if self.listen_state == ListenerState.WAKEWORD:
             LOG.debug("Waiting for wake word...")
             ww_data, lang = self._wait_until_wake_word(source, sec_per_buffer)
-
+            LOG.debug("Done waiting for WW")
             if ww_data.stopped or self.loop.state.sleeping:
+                LOG.debug(f"No data: stopped={ww_data.stopped}")
                 # If the waiting returned from a stop signal or sleep mode is active
                 return None, lang
 
