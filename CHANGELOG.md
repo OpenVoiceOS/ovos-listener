@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/ovos-listener/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a10...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a11...HEAD)
+
+**Fixed bugs:**
+
+- Killed if previous voice.pid exists [\#5](https://github.com/OpenVoiceOS/ovos-listener/issues/5)
+- rm pidlock [\#21](https://github.com/OpenVoiceOS/ovos-listener/pull/21) ([JarbasAl](https://github.com/JarbasAl))
+
+## [V0.0.2a11](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2a11) (2023-05-16)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a10...V0.0.2a11)
 
 **Merged pull requests:**
 
