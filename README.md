@@ -4,6 +4,7 @@ The "ears" of the OVOS assistant!
 
 Listens for wakewords, performs VAD and STT, the final transcribed speech is then sent to ovos-core
 
+OVOS has moved to [ovos-dinkum-listener](https://github.com/OpenVoiceOS/ovos-dinkum-listener), a new implementation based on the work done for the mk2, it is faster 
 
 # Configuration
 
