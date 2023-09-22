@@ -277,6 +277,9 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         listener_config = self.config.get('listener') or {}
         self.instant_listen = listener_config.get("instant_listen", False)
         self.listen_timeout = listener_config.get("listen_timeout", 45)
+
+        self.signals_enabled = listener_config.get("enable_signals", False)
+
         self._listen_ts = 0
 
         self.listen_state = ListenerState.WAKEWORD
@@ -331,7 +334,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         self.recording_timeout_with_silence = listener_config.get('recording_timeout_with_silence', 3.0)
         # mic meter settings, will write mic level to ipc, used by debug_cli
         # NOTE: this writes a lot to disk, it can be problematic in a sd card if you don't use a tmpfs for ipc
-        ipc = get_ipc_directory()
+        ipc = get_ipc_directory(config=self.config)
         os.makedirs(ipc, exist_ok=True)
         self.mic_level_file = os.path.join(ipc, "mic_level")
         self.mic_meter_ipc_enabled = listener_config.get("mic_meter_ipc", True)
@@ -626,17 +629,19 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
             self._listen_triggered = False
             return True
 
-        # Pressing the Mark 1 button can start recording (unless
-        # it is being used to mean 'stop' instead)
-        if check_for_signal('buttonPress', 1):
-            # give other processes time to consume this signal if
-            # it was meant to be a 'stop'
-            sleep(0.25)
-            if check_for_signal('buttonPress'):
-                # Signal is still here, assume it was intended to
-                # begin recording
-                LOG.debug("Button Pressed, wakeword not needed")
-                return True
+        # NOTE: signals deprecated in OVOS
+        if self.signals_enabled:
+            # Pressing the Mark 1 button can start recording (unless
+            # it is being used to mean 'stop' instead)
+            if check_for_signal('buttonPress', 1):
+                # give other processes time to consume this signal if
+                # it was meant to be a 'stop'
+                sleep(0.25)
+                if check_for_signal('buttonPress'):
+                    # Signal is still here, assume it was intended to
+                    # begin recording
+                    LOG.debug("Button Pressed, wakeword not needed")
+                    return True
 
         return False
 
