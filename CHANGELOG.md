@@ -1,5 +1,27 @@
 # Changelog
 
+## [Unreleased](https://github.com/OpenVoiceOS/ovos-listener/tree/HEAD)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2...HEAD)
+
+**Fixed bugs:**
+
+- Failed to upload metrics [\#16](https://github.com/OpenVoiceOS/ovos-listener/issues/16)
+- When mycroft.conf changed the listener doesn't listen anymore [\#15](https://github.com/OpenVoiceOS/ovos-listener/issues/15)
+
+**Closed issues:**
+
+- Service get "stuck" and doesn't listen anymore [\#12](https://github.com/OpenVoiceOS/ovos-listener/issues/12)
+- Relative path doesn't work for sounds [\#10](https://github.com/OpenVoiceOS/ovos-listener/issues/10)
+
+**Merged pull requests:**
+
+- Update for ovos-utils 0.1 Compat [\#27](https://github.com/OpenVoiceOS/ovos-listener/pull/27) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [V0.0.2](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2) (2023-09-22)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a14...V0.0.2)
+
 ## [V0.0.2a14](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.2a14) (2023-09-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2a13...V0.0.2a14)
@@ -79,10 +101,6 @@
 
 - ModuleNotFoundError: No module named 'ovos\_bus\_client' [\#4](https://github.com/OpenVoiceOS/ovos-listener/issues/4)
 - bump ovos-utils - fix/circular\_import [\#3](https://github.com/OpenVoiceOS/ovos-listener/pull/3) ([JarbasAl](https://github.com/JarbasAl))
-
-**Closed issues:**
-
-- Could not find 'end\_listening' audio file! [\#6](https://github.com/OpenVoiceOS/ovos-listener/issues/6)
 
 **Merged pull requests:**
 
