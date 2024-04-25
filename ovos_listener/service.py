@@ -21,7 +21,7 @@ from ovos_config.config import Configuration
 from ovos_plugin_manager.stt import get_stt_lang_configs, get_stt_supported_langs, get_stt_module_configs
 from ovos_plugin_manager.vad import get_vad_configs
 from ovos_plugin_manager.wakewords import get_ww_lang_configs, get_ww_supported_langs, get_ww_module_configs
-from ovos_utils.enclosure.api import EnclosureAPI
+from ovos_bus_client.apis.enclosure import EnclosureAPI
 from ovos_utils.log import LOG
 from ovos_utils.process_utils import ProcessStatus, StatusCallbackMap
 
