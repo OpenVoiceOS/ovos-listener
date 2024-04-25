@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/OpenVoiceOS/ovos-listener/tree/HEAD)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2...HEAD)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.3a1...HEAD)
+
+**Fixed bugs:**
+
+- Update ovos-backend-client dependency version [\#28](https://github.com/OpenVoiceOS/ovos-listener/pull/28) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [V0.0.3a1](https://github.com/OpenVoiceOS/ovos-listener/tree/V0.0.3a1) (2024-04-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-listener/compare/V0.0.2...V0.0.3a1)
 
 **Fixed bugs:**
 
