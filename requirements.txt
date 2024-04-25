@@ -15,4 +15,4 @@ ovos-utils~=0.0, >=0.0.31
 ovos-bus-client>=0.0.3a16,~=0.0
 ovos-plugin-manager~=0.0, >=0.0.23
 ovos-config~=0.0,>=0.0.8
-ovos_backend_client~=0.0, >=0.0.7
+ovos_backend_client~=0.0, >=0.0.6
