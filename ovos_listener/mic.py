@@ -36,7 +36,7 @@ from ovos_utils.file_utils import resolve_resource_file
 from ovos_utils.log import LOG
 from ovos_utils.messagebus import get_message_lang
 from ovos_utils.signal import check_for_signal, get_ipc_directory
-from ovos_utils.sound import play_audio, play_listening_sound, play_end_listening_sound
+from ovos_utils.sound import play_audio
 from speech_recognition import (
     Microphone,
     AudioSource,
@@ -673,7 +673,9 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         LOG.info('Listen triggered from external source.')
         self._listen_triggered = True
         if self.config.get("confirm_listening"):
-            play_listening_sound()
+            sound = self.config.get("sounds", {}).get("start_listening")
+            if sound:
+                play_audio(resolve_resource_file(sound))
 
     def _upload_hotword(self, audio, metadata):
         """Upload the wakeword in a background thread."""
@@ -747,7 +749,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         # indicate hotword was detected.
         if sound:
             try:
-                sound = resolve_resource_file(sound)
+                sound = resolve_resource_file(sound, config=self.config)
                 if self.instant_listen or not listen:
                     play_audio(sound)
                 else:
@@ -947,7 +949,9 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
             return None, lang
 
         LOG.debug("Thinking...")
-        play_end_listening_sound()
+        sound = self.config.get("sounds", {}).get("end_listening")
+        if sound:
+            play_audio(resolve_resource_file(sound))
         return audio_data, lang
 
     def _listen_phrase(self, source, sec_per_buffer, stream):
